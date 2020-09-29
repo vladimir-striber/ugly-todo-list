@@ -28,6 +28,7 @@ let todoList = {
       todoText: todoItem,
       completed: false
     });
+    console.log("Todo added!");
     this.displayTodos();
   },
   changeTodo: function (index, todoText) {
