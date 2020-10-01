@@ -3,6 +3,7 @@
 let todoList = {
   todos: [],
   displayTodos: function () {
+    debugger;
     if (this.todos.length === 0) {
       alert("Todo list is empty");
     } else {
@@ -77,6 +78,16 @@ let todoList = {
     this.displayTodos();
   }
 };
+
+const displayTodosButton = document.getElementById("displayTodosButton");
+displayTodosButton.addEventListener("click", function () {
+  todoList.displayTodos();
+});
+
+const toggleTodosButton = document.getElementById("toggleAllButton");
+toggleTodosButton.addEventListener("click", function () {
+  todoList.toggleAll();
+});
 
 // Method calls
 // todoList.displayTodos();
