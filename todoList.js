@@ -3,7 +3,6 @@
 let todoList = {
   todos: [],
   displayTodos: function () {
-    debugger;
     if (this.todos.length === 0) {
       alert("Todo list is empty");
     } else {
