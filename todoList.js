@@ -22,13 +22,13 @@ let todoList = {
       }
     }
   },
-  addTodo: function (todoItem) {
-    // let todoItem = document.querySelector(".todoItem").value;
+  addTodo: function () {
+    let todoItem = document.querySelector(".todoItem").value;
     this.todos.push({
       todoText: todoItem,
       completed: false
     });
-    console.log("Todo added!");
+    console.log(todoItem, "value");
     this.displayTodos();
   },
   changeTodo: function (index, todoText) {
@@ -49,6 +49,7 @@ let todoList = {
     this.displayTodos();
   },
   toggleAll: function () {
+    // debugger;
     let completedTodos = [];
     // let completedTodos = 0; // This is different approach
     const totalTodos = this.todos.length;
@@ -78,15 +79,31 @@ let todoList = {
   }
 };
 
-const displayTodosButton = document.getElementById("displayTodosButton");
-displayTodosButton.addEventListener("click", function () {
-  todoList.displayTodos();
-});
+// Old approach
 
-const toggleTodosButton = document.getElementById("toggleAllButton");
-toggleTodosButton.addEventListener("click", function () {
-  todoList.toggleAll();
-});
+// const displayTodosButton = document.getElementById("displayTodosButton");
+// displayTodosButton.addEventListener("click", function () {
+//   todoList.displayTodos();
+// });
+//
+// const toggleTodosButton = document.getElementById("toggleAllButton");
+// toggleTodosButton.addEventListener("click", function () {
+//   todoList.toggleAll();
+// });
+
+// New approach
+
+let handlers = {
+  addTodo: function () {
+    todoList.addTodo();
+  },
+  displayTodos: function () {
+    todoList.displayTodos();
+  },
+  toggleAll: function () {
+    todoList.toggleAll();
+  }
+};
 
 // Method calls
 // todoList.displayTodos();

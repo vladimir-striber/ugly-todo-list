@@ -1,0 +1,14 @@
+/* Todo list styles */
+
+.formWrapper {
+  background-color: #eee;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+}
+
+.formWrapper {
+  width: 500px;
+}

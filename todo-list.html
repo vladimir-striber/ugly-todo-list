@@ -7,28 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todo list</title>
 
-  <style>
-    .inputField {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .formWrapper {
-      width: 500px;
-    }
-  </style>
-
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
 <h1>Todo list</h1>
 
-<!--<div class="formWrapper">-->
-  <!--<form action="">-->
-    <!--<div class="inputField">-->
-      <!--<label for="todo-item">Add item</label>-->
-      <!--<input type="text" class="todoItem" aria-label="todo-item" id="todo-item">-->
-    <!--</div>-->
+<div class="formWrapper">
+  <form action="">
+    <div class="inputField">
+      <label for="todo-item">Add item</label>
+      <input type="text" class="todoItem" aria-label="todo-item" id="todo-item">
+      <button onclick="handlers.addTodo(); return false;">Add</button>
+    </div>
 
     <!--<div class="inputField">-->
       <!--<label for="todo-item-index">Item index</label>-->
@@ -45,14 +37,22 @@
       <!--<input type="text" class="deletedTodoItemIndex" aria-label="changed-todo-item-value" id="deleted-todo-item-index">-->
     <!--</div>-->
 
-  <!--</form>-->
-<!--</div>-->
+  </form>
+</div>
+
+<!-- Old approach -->
+
+<!--<button id="displayTodosButton">Display todos</button>-->
+<!--<button id="toggleAllButton">Toggle all todos</button>-->
+
+<!-- New approach -->
 
 <!--<button onclick="todoList.displayTodos()">Display todos</button>-->
 <!--<button onclick="todoList.toggleAll()">Toggle all todos</button>-->
 
-<button id="displayTodosButton">Display todos</button>
-<button id="toggleAllButton">Toggle all todos</button>
+<button onclick="handlers.displayTodos()">Display todos</button>
+<button onclick="handlers.toggleAll()">Toggle all todos</button>
+
 
 <script src="todoList.js"></script>
 
