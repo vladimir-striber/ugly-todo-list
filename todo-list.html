@@ -22,15 +22,13 @@
       <button onclick="handlers.addTodo(); return false;">Add</button>
     </div>
 
-    <!--<div class="inputField">-->
-      <!--<label for="todo-item-index">Item index</label>-->
-      <!--<input type="text" class="todoItemIndex" aria-label="todo-item-index" id="todo-item-index">-->
-    <!--</div>-->
-
-    <!--<div class="inputField">-->
-      <!--<label for="changed-todo-item-value">New item value</label>-->
-      <!--<input type="text" class="changedTodoItemValue" aria-label="changed-todo-item-value" id="changed-todo-item-value">-->
-    <!--</div>-->
+    <div class="inputField">
+      <label for="todo-item-index">Item index</label>
+      <input type="number" class="todoItemIndex" aria-label="todo-item-index" id="todo-item-index">
+      <label for="changed-todo-item-value">New item value</label>
+      <input type="text" class="changedTodoItemValue" aria-label="changed-todo-item-value" id="changed-todo-item-value">
+      <button onclick="handlers.changeTodo(); return false;">Change</button>
+    </div>
 
     <!--<div class="inputField">-->
       <!--<label for="deleted-todo-item-index">Delete item</label>-->

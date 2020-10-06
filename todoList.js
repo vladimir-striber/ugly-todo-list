@@ -22,14 +22,15 @@ let todoList = {
       }
     }
   },
-  addTodo: function () {
-    let todoItem = document.querySelector(".todoItem").value;
+  addTodo: function (todoValue) {
+
     this.todos.push({
-      todoText: todoItem,
+      todoText: todoValue,
       completed: false
     });
-    console.log(todoItem, "value");
-    this.displayTodos();
+    // todoValue = "";
+    // console.log(todoValue, "value");
+    // this.displayTodos();
   },
   changeTodo: function (index, todoText) {
     // index = document.querySelector(".todoItemIndex").value;
@@ -60,20 +61,20 @@ let todoList = {
         // completedTodos++ // This is different approach
       }
     }
-    console.log(completedTodos, "completed");
+    // console.log(completedTodos, "completed");
     // Scenario 1: if all items are not completed - make all of them completed
     if (completedTodos.length < totalTodos) {
       for (let i = 0; i < totalTodos; i++) {
         this.todos[i].completed = true;
       }
-      console.log("completed < todos");
+      // console.log("completed < todos");
     }
     // Scenario 2: if all items are completed - make all of them uncompleted
     if (completedTodos.length === totalTodos) {
       for (let i = 0; i < totalTodos; i++) {
         this.todos[i].completed = false;
       }
-      console.log("completed = todos");
+      // console.log("completed = todos");
     }
     this.displayTodos();
   }
@@ -95,13 +96,27 @@ let todoList = {
 
 let handlers = {
   addTodo: function () {
-    todoList.addTodo();
+    let todoValue = document.querySelector(".todoItem");
+    // let todoInput = document.querySelector(".todoItem");
+
+    todoList.addTodo(todoValue.value);
+    todoValue.value = "";
   },
   displayTodos: function () {
     todoList.displayTodos();
   },
   toggleAll: function () {
     todoList.toggleAll();
+  },
+  changeTodo: function () {
+    let changeTodoIndex = document.querySelector(".todoItemIndex");
+    let changeTodoValue = document.querySelector(".changedTodoItemValue");
+
+    // console.log(changeTodoIndex.valueAsNumber, "index value");
+
+    todoList.changeTodo(changeTodoIndex.valueAsNumber, changeTodoValue.value);
+    changeTodoIndex.value = "";
+    changeTodoValue.value = "";
   }
 };
 
