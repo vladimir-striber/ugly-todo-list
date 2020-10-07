@@ -37,14 +37,15 @@ let todoList = {
     // newValue = document.querySelector(".changedTodoItemValue").value;
     // this.todos[index] = newValue;
     this.todos[index].todoText = todoText;
-    this.displayTodos();
+    // this.displayTodos();
   },
   deleteTodo: function (index) {
     // index = document.querySelector(".deletedTodoItemIndex").value;
     this.todos.splice(index, 1);
-    this.displayTodos();
+    // this.displayTodos();
   },
   toggleCompleted: function (index) {
+    // debugger;
     let todo = this.todos[index];
     todo.completed = !todo.completed;
     this.displayTodos();
@@ -117,6 +118,16 @@ let handlers = {
     todoList.changeTodo(changeTodoIndex.valueAsNumber, changeTodoValue.value);
     changeTodoIndex.value = "";
     changeTodoValue.value = "";
+  },
+  deleteTodo: function () {
+    let deleteTodoIndex = document.querySelector(".deletedTodoItemIndex");
+    todoList.deleteTodo(deleteTodoIndex.valueAsNumber);
+    deleteTodoIndex.value = "";
+  },
+  toggleCompleted: function () {
+    let toggleTodoIndex = document.querySelector(".toggledTodoItemIndex");
+    todoList.toggleCompleted(toggleTodoIndex.valueAsNumber);
+    toggleTodoIndex.value = "";
   }
 };
 

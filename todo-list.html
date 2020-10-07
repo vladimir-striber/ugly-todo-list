@@ -19,21 +19,31 @@
     <div class="inputField">
       <label for="todo-item">Add item</label>
       <input type="text" class="todoItem" aria-label="todo-item" id="todo-item">
+
       <button onclick="handlers.addTodo(); return false;">Add</button>
     </div>
 
     <div class="inputField">
-      <label for="todo-item-index">Item index</label>
+      <label for="todo-item-index">Change item</label>
       <input type="number" class="todoItemIndex" aria-label="todo-item-index" id="todo-item-index">
-      <label for="changed-todo-item-value">New item value</label>
+
+      <label for="changed-todo-item-value">Changed item value</label>
       <input type="text" class="changedTodoItemValue" aria-label="changed-todo-item-value" id="changed-todo-item-value">
+
       <button onclick="handlers.changeTodo(); return false;">Change</button>
     </div>
 
-    <!--<div class="inputField">-->
-      <!--<label for="deleted-todo-item-index">Delete item</label>-->
-      <!--<input type="text" class="deletedTodoItemIndex" aria-label="changed-todo-item-value" id="deleted-todo-item-index">-->
-    <!--</div>-->
+    <div class="inputField">
+      <label for="deleted-todo-item-index">Delete item</label>
+      <input type="number" class="deletedTodoItemIndex" aria-label="deleted-todo-item-value" id="deleted-todo-item-index">
+      <button onclick="handlers.deleteTodo(); return false;">Delete</button>
+    </div>
+
+    <div class="inputField">
+      <label for="toggled-todo-item-index">Toggle complete</label>
+      <input type="number" class="toggledTodoItemIndex" aria-label="toggled-todo-item-value" id="toggled-todo-item-index">
+      <button onclick="handlers.toggleCompleted(); return false;">Toggle</button>
+    </div>
 
   </form>
 </div>
