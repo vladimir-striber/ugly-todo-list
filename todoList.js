@@ -30,7 +30,7 @@ let todoList = {
     });
     // todoValue = "";
     // console.log(todoValue, "value");
-    // this.displayTodos();
+    this.displayTodos();
   },
   changeTodo: function (index, todoText) {
     // index = document.querySelector(".todoItemIndex").value;
@@ -48,7 +48,7 @@ let todoList = {
     // debugger;
     let todo = this.todos[index];
     todo.completed = !todo.completed;
-    this.displayTodos();
+    // this.displayTodos();
   },
   toggleAll: function () {
     // debugger;
@@ -101,6 +101,7 @@ let handlers = {
     // let todoInput = document.querySelector(".todoItem");
 
     todoList.addTodo(todoValue.value);
+    view.displayTodos();
     todoValue.value = "";
   },
   displayTodos: function () {
@@ -127,8 +128,42 @@ let handlers = {
   toggleCompleted: function () {
     let toggleTodoIndex = document.querySelector(".toggledTodoItemIndex");
     todoList.toggleCompleted(toggleTodoIndex.valueAsNumber);
+    view.displayTodos();
     toggleTodoIndex.value = "";
   }
+};
+
+let view = {
+  displayTodos: function () {
+    // First approach (not quit what we want)
+    // let todoLi = document.createElement("li");
+    // let todoUl = document.querySelector(".todoUl");
+    // let todoValue = document.querySelector(".todoItem");
+    // todoLi.innerText = todoValue.value;
+    // todoUl.appendChild(todoLi);
+    // todoValue.value = "";
+
+    // Second approach
+    let todoUl = document.querySelector(".todoUl");
+    todoUl.innerHTML = "";
+    for (let i = 0; i < todoList.todos.length; i++ ) {
+      let todoLi = document.createElement("li");
+      let todoCompletedIcon = document.createElement("i");
+      const check = String.fromCodePoint(0x2705);
+      const cross = String.fromCodePoint(0x274C);
+
+      if (todoList.todos[i].completed === true) {
+        todoCompletedIcon.innerText = check
+      } else {
+        todoCompletedIcon.innerText = cross
+      }
+
+      todoLi.textContent = todoList.todos[i].todoText;
+      todoLi.appendChild(todoCompletedIcon);
+      todoUl.appendChild(todoLi);
+    }
+
+  },
 };
 
 // Method calls
