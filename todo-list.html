@@ -15,7 +15,8 @@
 <h1>Todo list</h1>
 
 <div class="formWrapper">
-  <!--<form action="">-->
+
+  <!--Add todo-->
     <div class="inputField">
       <label for="todo-item">Add item</label>
       <input type="text" class="todoItem" aria-label="todo-item" id="todo-item">
@@ -23,6 +24,7 @@
       <button onclick="handlers.addTodo(); return false;">Add</button>
     </div>
 
+  <!--Change todo-->
     <div class="inputField">
       <label for="todo-item-index">Change item</label>
       <input type="number" class="todoItemIndex" aria-label="todo-item-index" id="todo-item-index">
@@ -33,19 +35,19 @@
       <button onclick="handlers.changeTodo(); return false;">Change</button>
     </div>
 
+  <!--Delete todo-->
     <div class="inputField">
       <label for="deleted-todo-item-index">Delete item</label>
       <input type="number" class="deletedTodoItemIndex" aria-label="deleted-todo-item-value" id="deleted-todo-item-index">
       <button onclick="handlers.deleteTodo(); return false;">Delete</button>
     </div>
 
+  <!--Toggle complete-->
     <div class="inputField">
       <label for="toggled-todo-item-index">Toggle complete</label>
       <input type="number" class="toggledTodoItemIndex" aria-label="toggled-todo-item-value" id="toggled-todo-item-index">
       <button onclick="handlers.toggleCompleted(); return false;">Toggle</button>
     </div>
-
-  <!--</form>-->
 
   <ul class="todoUl"></ul>
 </div>
@@ -60,7 +62,7 @@
 <!--<button onclick="todoList.displayTodos()">Display todos</button>-->
 <!--<button onclick="todoList.toggleAll()">Toggle all todos</button>-->
 
-<button onclick="handlers.displayTodos()">Display todos</button>
+<!--<button onclick="handlers.displayTodos()">Display todos</button>-->
 <button onclick="handlers.toggleAll()">Toggle all todos</button>
 
 
