@@ -40,8 +40,11 @@ let todoList = {
   },
   deleteTodo: function (index) {
     // index = document.querySelector(".deletedTodoItemIndex").value;
+    console.log(index, "index from todolist.deleteTodo");
     this.todos.splice(index, 1);
     // this.displayTodos();
+    view.displayTodos();
+    console.log(this.todos);
   },
   toggleCompleted: function (index) {
     let todo = this.todos[index];
@@ -98,11 +101,11 @@ let handlers = {
     changeTodoIndex.value = "";
     changeTodoValue.value = "";
   },
-  deleteTodo: function () {
-    let deleteTodoIndex = document.querySelector(".deletedTodoItemIndex");
-
-    todoList.deleteTodo(deleteTodoIndex.valueAsNumber);
-    deleteTodoIndex.value = "";
+  deleteTodo: function (index) {
+    // let deleteTodoIndex = document.querySelector(".deletedTodoItemIndex");
+    //
+    todoList.deleteTodo(index);
+    // deleteTodoIndex.value = "";
   },
   toggleCompleted: function () {
     let toggleTodoIndex = document.querySelector(".toggledTodoItemIndex");
@@ -138,6 +141,7 @@ let view = {
         todoCompletedIcon.innerText = cross
       }
 
+      todoLi.id = i;
       todoLi.textContent = todoList.todos[i].todoText;
       todoLi.appendChild(todoCompletedIcon);
       todoLi.appendChild(this.createDeleteButton());
@@ -146,9 +150,36 @@ let view = {
 
   },
   createDeleteButton: function () {
-    // debugger;
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
+    deleteButton.className = "deleteButton";
     return deleteButton;
   },
+  setUpEventListeners: function () {
+    let todoUl = document.querySelector(".todoUl");
+
+    todoUl.addEventListener("click", function (event) {
+      console.log(event);
+      let elementClicked = event.target;
+      console.log(elementClicked, "element clicked");
+
+      // check if element is delete button
+      if (elementClicked.className === "deleteButton") {
+        console.log("element is delete button");
+
+        let index = elementClicked.parentNode.id;
+        console.log(index, "index");
+
+        let indexInt = parseInt(index);
+        console.log(indexInt, "indexInt");
+
+        handlers.deleteTodo(indexInt)
+      }
+    });
+  }
 };
+
+// Method calls
+view.setUpEventListeners();
+
+
