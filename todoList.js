@@ -43,7 +43,6 @@ let todoList = {
     console.log(index, "index from todolist.deleteTodo");
     this.todos.splice(index, 1);
     // this.displayTodos();
-    view.displayTodos();
     console.log(this.todos);
   },
   toggleCompleted: function (index) {
@@ -105,6 +104,7 @@ let handlers = {
     // let deleteTodoIndex = document.querySelector(".deletedTodoItemIndex");
     //
     todoList.deleteTodo(index);
+    view.displayTodos();
     // deleteTodoIndex.value = "";
   },
   toggleCompleted: function () {
