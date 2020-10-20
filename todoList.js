@@ -57,24 +57,40 @@ let todoList = {
     const totalTodos = this.todos.length;
 
     // check how many items are completed
-    for (let i = 0; i < totalTodos; i++) {
-      if (this.todos[i].completed) {
-        completedTodos.push(this.todos[i]);
+    // for (let i = 0; i < totalTodos; i++) {
+    //   if (this.todos[i].completed) {
+    //     completedTodos.push(this.todos[i]);
+    //     // completedTodos++ // This is different approach
+    //   }
+    // }
+    this.todos.forEach(function (todo) {
+      if (todo.completed) {
+        completedTodos.push(todo);
         // completedTodos++ // This is different approach
       }
-    }
+    });
+
     // Scenario 1: if all items are not completed - make all of them completed
-    if (completedTodos.length < totalTodos) {
-      for (let i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = true;
+    // if (completedTodos.length < totalTodos) {
+    //   this.todos.forEach(function (todo) {
+    //     todo.completed = true;
+    //   })
+    // }
+    // // Scenario 2: if all items are completed - make all of them uncompleted
+    // if (completedTodos.length === totalTodos) {
+    //   this.todos.forEach(function (todo) {
+    //     todo.completed = false;
+    //   })
+    // }
+
+    this.todos.forEach(function (todo) {
+      if (completedTodos.length === totalTodos) {
+        todo.completed = false;
+      } else {
+        todo.completed = true;
       }
-    }
-    // Scenario 2: if all items are completed - make all of them uncompleted
-    if (completedTodos.length === totalTodos) {
-      for (let i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = false;
-      }
-    }
+    });
+
     // this.displayTodos();
   }
 };
@@ -118,35 +134,48 @@ let handlers = {
 
 let view = {
   displayTodos: function () {
-    // First approach (not quite what we want)
-    // let todoLi = document.createElement("li");
-    // let todoUl = document.querySelector(".todoUl");
-    // let todoValue = document.querySelector(".todoItem");
-    // todoLi.innerText = todoValue.value;
-    // todoUl.appendChild(todoLi);
-    // todoValue.value = "";
-
-    // Second approach
     let todoUl = document.querySelector(".todoUl");
     todoUl.innerHTML = "";
-    for (let i = 0; i < todoList.todos.length; i++ ) {
+
+    // for (let i = 0; i < todoList.todos.length; i++ ) {
+    //   let todoLi = document.createElement("li");
+    //   let todoCompletedIcon = document.createElement("i");
+    //   const check = String.fromCodePoint(0x2705);
+    //   const cross = String.fromCodePoint(0x274C);
+    //
+    //   if (todoList.todos[i].completed === true) {
+    //     todoCompletedIcon.innerText = check
+    //   } else {
+    //     todoCompletedIcon.innerText = cross
+    //   }
+    //
+    //   todoLi.id = i;
+    //   todoLi.textContent = todoList.todos[i].todoText;
+    //   todoLi.appendChild(todoCompletedIcon);
+    //   todoLi.appendChild(this.createDeleteButton());
+    //   todoUl.appendChild(todoLi);
+    // }
+
+    todoList.todos.forEach(function(todo, index) {
       let todoLi = document.createElement("li");
       let todoCompletedIcon = document.createElement("i");
       const check = String.fromCodePoint(0x2705);
       const cross = String.fromCodePoint(0x274C);
 
-      if (todoList.todos[i].completed === true) {
+      if(todo.completed === true) {
         todoCompletedIcon.innerText = check
       } else {
         todoCompletedIcon.innerText = cross
       }
 
-      todoLi.id = i;
-      todoLi.textContent = todoList.todos[i].todoText;
+      debugger;
+
+      todoLi.id = index;
+      todoLi.textContent = todo.todoText;
       todoLi.appendChild(todoCompletedIcon);
       todoLi.appendChild(this.createDeleteButton());
       todoUl.appendChild(todoLi);
-    }
+    }, this);
 
   },
   createDeleteButton: function () {
